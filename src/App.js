@@ -14,8 +14,8 @@ function App() {
   return (
     //  wrap in an empty element <></>, "fragment" as a JS function can only return one thing
     <>
-
-     <TodoList />
+     {/* props defaults passed through props like attributes to an HTML component */}
+    <TodoList todos={todos}/>
     <input type="text"></input>
     <button> Add Todo</button>
     <button> Clear Complete</button>
