@@ -71,7 +71,8 @@ function App() {
     <input ref={todoNameRef} type="text"></input>
     <button onClick={handleAddTodo}> Add Todo</button>
     <button> Clear Complete</button>
-    <div>0 left to do</div>
+    {/* have number of todos left update dynamically */}
+    <div> {todos.filter(todo => !todo.complete).length} left to do</div>
     </>
   )
 }

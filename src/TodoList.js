@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Todo from './Todo'
 
 // render todos from App.js props matching <TodoList todos={todos}/> 
-export default function TodoList({ todos }) {
+export default function TodoList({ todos, toggleTodo }) {
   return (
 
     // <div>
@@ -15,7 +15,7 @@ export default function TodoList({ todos }) {
     // for each todo Component, return todo. Requires a Key-Prop so that React will only update the todos in the array that change/are new rather than rerendering all elements. Also need an object to store if the todo is complete and so need an ID in App.js as well as a Name.
     // make key same as id to make unique
     todos.map(todo => {
-        return <Todo key={todo.id} todo={todo} toggleTodo={toggleTodo} />
+        return <Todo key={todo.id} toggleTodo= {toggleTodo} todo={todo}  />
     })
   )
 
