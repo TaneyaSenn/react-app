@@ -52,12 +52,17 @@ function App() {
     // to clear => setTodos([])
     setTodos(prevTodos => {
       // use UUID library to cretae new unique ids for each (npm i uuid) 
-      return [... prevTodos, { id: uuid, name: name, complete: false}]
+      return [... prevTodos, { id:  { v4: uuidv4 } , name: name, complete: false}]
     })
     // if we type something and hit todo, it will clear input after
     todoNameRef.current.value = null;
 
     // use hook useEffect in order to save 
+  }
+
+  function handleClearTodos() {
+    const newTodos = todos.filter(todo => !todo.complete)
+    setTodos(newTodos)
   }
 
   return (
@@ -70,7 +75,7 @@ function App() {
     {/* use ref on input to access using const variable name */}
     <input ref={todoNameRef} type="text"></input>
     <button onClick={handleAddTodo}> Add Todo</button>
-    <button> Clear Complete</button>
+    <button onClick={handleClearTodos}> Clear Complete</button>
     {/* have number of todos left update dynamically */}
     <div> {todos.filter(todo => !todo.complete).length} left to do</div>
     </>
