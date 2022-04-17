@@ -5,8 +5,9 @@ import React, { useState, useRef, useEffect } from "react";
 import TodoList from "./TodoList";
 // import uuid 
 // import v4 from 'uuid';
-const { v4: uuidv4 } = require('uuid');
-const uuid = { v4: uuidv4 } 
+// const { v4: uuidv4 } = require('uuid');
+// const uuid = { v4: uuidv4 } 
+import { v4 as uuidv4 } from "uuid";
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
@@ -15,8 +16,6 @@ function App() {
   // 1st element is all of our todos
   // 2nd element is the function we call that allows us to update our todos
   // e.g. Todo 1 & Todo 2 become our default values -> const [todos, setTodos] = useState(['Todo 1', 'Todo 2'])
-
-
   // set up id, name and complete flag ->  const [todos, setTodos] = useState([{ id: 1, name: 'Todo 1', complete: false }])
  
 
@@ -52,7 +51,7 @@ function App() {
     // to clear => setTodos([])
     setTodos(prevTodos => {
       // use UUID library to cretae new unique ids for each (npm i uuid) 
-      return [... prevTodos, { id:  { v4: uuidv4 } , name: name, complete: false}]
+      return [... prevTodos, { id: uuidv4(), name: name, complete: false}]
     })
     // if we type something and hit todo, it will clear input after
     todoNameRef.current.value = null;
